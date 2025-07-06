@@ -8,7 +8,7 @@ function App() {
 
   const handleSubmit = async ({ name, location }) => {
     setLoading(true);
-    const res = await fetch('https://localbussinessmini.onrender.com', {
+    const res = await fetch('https://localbussinessmini.onrender.com/business-data', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, location }),
@@ -19,7 +19,7 @@ function App() {
   };
 
   const handleRegenerate = async () => {
-    const res = await fetch(`https://localbussinessmini.onrender.com`);
+    const res = await fetch(`https://localbussinessmini.onrender.com/regenerate-headline?name=${business.name}&location=${business.location}`);
     const { headline } = await res.json();
     setBusiness((prev) => ({ ...prev, headline }));
   };
